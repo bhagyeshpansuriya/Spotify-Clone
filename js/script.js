@@ -22,7 +22,7 @@ async function getSongs(folder){
     currFolder=folder
     let a = await fetch(`${folder}/`)
     let responce=await a.text();
-    console.log(responce);
+    
     let div = document.createElement("div");
     div.innerHTML = responce;
     let as=div.getElementsByTagName("a")
@@ -123,7 +123,7 @@ async function main(){
 
     await getSongs("songs/bollywood")
     playMusic(songs[0],true)
-    console.log(songs); 
+    
 
     displayAlbums()
 
@@ -174,7 +174,7 @@ async function main(){
     // Add an event listener to next
     next.addEventListener("click", () => {
         currSong.pause()
-        console.log("Next clicked")
+       
 
         let index = songs.indexOf(currSong.src.split("/").slice(-1)[0])
         if (index < songs.length-1)  {
@@ -186,7 +186,7 @@ async function main(){
     })
 
     document.querySelector(".range").getElementsByTagName("input")[0].addEventListener("change",(e)=>{
-        console.log(e,e.target,e.target.value)
+        
         currSong.volume=parseInt(e.target.value)/100
         if(currSong.volume>0){
             document.querySelector(".volume>img").src=document.querySelector(".volume>img").src.replace("imgs/mute.svg","imgs/volume.svg")  
@@ -195,7 +195,7 @@ async function main(){
 
 
     document.querySelector(".volume>img").addEventListener("click",e=>{
-        console.log(e.target)
+        
         if(e.target.src.includes("imgs/volume.svg")){
             e.target.src=e.target.src.replace("imgs/volume.svg","imgs/mute.svg")
             currSong.volume=0;
